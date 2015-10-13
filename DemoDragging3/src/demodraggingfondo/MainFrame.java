@@ -28,6 +28,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,7 +63,36 @@ public class MainFrame extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jLayeredPane1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
+        jLayeredPane1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(51, 204, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel2MouseDragged(evt);
+            }
+        });
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel2MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel2MouseReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 316, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 246, Short.MAX_VALUE)
+        );
+
+        jLayeredPane1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 320, 250));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\DemoDragging\\Painting.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
@@ -120,6 +150,42 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_jPanel1MouseReleased
 
+    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+        Point p = jLayeredPane1.getMousePosition();
+        // Ajuste de bordes
+        int Xpanel2 = Xpanel2_0 + p.x-Xmouse_0;
+        int Ypanel2 = Ypanel2_0 + p.y-Ymouse_0;
+        if(Xpanel2<0) Xpanel2 = 0;
+        if(Ypanel2<0) Ypanel2 = 0;
+        int Xmax = Wbox-Wpanel2;
+        int Ymax = Hbox-Hpanel2;
+        if(Xpanel2>Xmax) Xpanel2 = Xmax;
+        if(Ypanel2>Ymax) Ypanel2 = Ymax;
+        //refresh
+        p.x = Xpanel2;
+        p.y = Ypanel2;
+        jPanel2.setLocation(p);    }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        Rectangle r = jLayeredPane1.getBounds();
+        Wbox = r.width;
+        Hbox = r.height;
+        r = jPanel2.getBounds();
+        Wpanel2 = r.width;
+        Hpanel2 = r.height;
+        Xpanel2_0 = r.x;
+        Ypanel2_0 = r.y;
+        
+        //Cambio de icono
+        Point p = jLayeredPane1.getMousePosition();
+        Xmouse_0 = p.x;
+        Ymouse_0 = p.y;
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));    }//GEN-LAST:event_jPanel2MousePressed
+
+    private void jPanel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseReleased
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_jPanel2MouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -160,5 +226,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
