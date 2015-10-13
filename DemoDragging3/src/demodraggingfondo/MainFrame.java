@@ -43,6 +43,9 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel1MouseEntered(evt);
             }
@@ -78,6 +81,9 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel2MouseEntered(evt);
             }
@@ -160,7 +166,6 @@ public class MainFrame extends javax.swing.JFrame {
             Ypanel1 = Ymax;
         }
         //Ajuste de colision
-        //TODO
         //refresh
         p.x = Xpanel1;
         p.y = Ypanel1;
@@ -231,6 +236,14 @@ public class MainFrame extends javax.swing.JFrame {
         Ymouse_0 = p.y;
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
     }//GEN-LAST:event_jPanel2MousePressed
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        jLayeredPane1.moveToFront(jPanel1);
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        jLayeredPane1.moveToFront(jPanel2);
+    }//GEN-LAST:event_jPanel2MouseClicked
 
     /**
      * @param args the command line arguments
