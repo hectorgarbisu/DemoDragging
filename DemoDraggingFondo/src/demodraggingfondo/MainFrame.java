@@ -1,3 +1,5 @@
+package demodraggingfondo;
+
 
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -26,10 +28,10 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Demostrador de Arrastre/Dragging");
+        setTitle("Héctor Garbisu DIU 2015");
 
         jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -62,8 +64,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLayeredPane1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        jLabel2.setText("Héctor Garbisu DIU 2015");
-        jLayeredPane1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\DemoDragging\\Painting.jpg")); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLayeredPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,7 +157,7 @@ public class MainFrame extends javax.swing.JFrame {
     int Wbox,Hbox,Wpanel1,Hpanel1;
     int Xpanel1_0,Ypanel1_0,Xmouse_0,Ymouse_0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
