@@ -41,6 +41,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel1MouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPanel1MousePressed(evt);
             }
@@ -63,7 +69,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLayeredPane1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jLabel2.setText("Héctor Garbisu DIU 2015");
-        jLayeredPane1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
+        jLayeredPane1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,7 +79,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
         );
 
         pack();
@@ -88,23 +94,23 @@ public class MainFrame extends javax.swing.JFrame {
         Hpanel1 = r.height;
         Xpanel1_0 = r.x;
         Ypanel1_0 = r.y;
-        
         //Cambio de icono
         Point p = jLayeredPane1.getMousePosition();
         Xmouse_0 = p.x;
         Ymouse_0 = p.y;
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
         Point p = jLayeredPane1.getMousePosition();
+        if(p==null) return; //Evita un nullPointerException
         // Ajuste de bordes
+        int Xmax = Wbox-Wpanel1;
+        int Ymax = Hbox-Hpanel1;
         int Xpanel1 = Xpanel1_0 + p.x-Xmouse_0;
         int Ypanel1 = Ypanel1_0 + p.y-Ymouse_0;
         if(Xpanel1<0) Xpanel1 = 0;
         if(Ypanel1<0) Ypanel1 = 0;
-        int Xmax = Wbox-Wpanel1;
-        int Ymax = Hbox-Hpanel1;
         if(Xpanel1>Xmax) Xpanel1 = Xmax;
         if(Ypanel1>Ymax) Ypanel1 = Ymax;
         //refresh
@@ -114,8 +120,16 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     }//GEN-LAST:event_jPanel1MouseReleased
+
+    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_jPanel1MouseEntered
+
+    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_jPanel1MouseExited
 
     /**
      * @param args the command line arguments

@@ -1,6 +1,5 @@
 package demodraggingfondo;
 
-
 import java.awt.Point;
 import java.awt.Rectangle;
 
@@ -44,6 +43,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel1MouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPanel1MousePressed(evt);
             }
@@ -73,6 +78,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel2MouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPanel2MousePressed(evt);
             }
@@ -85,16 +96,16 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 316, Short.MAX_VALUE)
+            .addGap(0, 196, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 246, Short.MAX_VALUE)
+            .addGap(0, 126, Short.MAX_VALUE)
         );
 
-        jLayeredPane1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 320, 250));
+        jLayeredPane1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 200, 130));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\DemoDragging\\Painting.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("G:\\Documentos\\NetBeansProjects\\DemoDragging\\Painting.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
         jLayeredPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -121,25 +132,35 @@ public class MainFrame extends javax.swing.JFrame {
         Hpanel1 = r.height;
         Xpanel1_0 = r.x;
         Ypanel1_0 = r.y;
-        
         //Cambio de icono
         Point p = jLayeredPane1.getMousePosition();
         Xmouse_0 = p.x;
         Ymouse_0 = p.y;
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
-        Point p = jLayeredPane1.getMousePosition();
+        Point p = jLayeredPane1.getMousePosition();        
+        if(p==null) return; //Evita un nullPointerException
         // Ajuste de bordes
-        int Xpanel1 = Xpanel1_0 + p.x-Xmouse_0;
-        int Ypanel1 = Ypanel1_0 + p.y-Ymouse_0;
-        if(Xpanel1<0) Xpanel1 = 0;
-        if(Ypanel1<0) Ypanel1 = 0;
-        int Xmax = Wbox-Wpanel1;
-        int Ymax = Hbox-Hpanel1;
-        if(Xpanel1>Xmax) Xpanel1 = Xmax;
-        if(Ypanel1>Ymax) Ypanel1 = Ymax;
+        int Xpanel1 = Xpanel1_0 + p.x - Xmouse_0;
+        int Ypanel1 = Ypanel1_0 + p.y - Ymouse_0;
+        if (Xpanel1 < 0) {
+            Xpanel1 = 0;
+        }
+        if (Ypanel1 < 0) {
+            Ypanel1 = 0;
+        }
+        int Xmax = Wbox - Wpanel1;
+        int Ymax = Hbox - Hpanel1;
+        if (Xpanel1 > Xmax) {
+            Xpanel1 = Xmax;
+        }
+        if (Ypanel1 > Ymax) {
+            Ypanel1 = Ymax;
+        }
+        //Ajuste de colision
+        //TODO
         //refresh
         p.x = Xpanel1;
         p.y = Ypanel1;
@@ -147,44 +168,69 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     }//GEN-LAST:event_jPanel1MouseReleased
 
     private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
         Point p = jLayeredPane1.getMousePosition();
+        if(p==null) return; //Evita un nullPointerException
         // Ajuste de bordes
-        int Xpanel2 = Xpanel2_0 + p.x-Xmouse_0;
-        int Ypanel2 = Ypanel2_0 + p.y-Ymouse_0;
-        if(Xpanel2<0) Xpanel2 = 0;
-        if(Ypanel2<0) Ypanel2 = 0;
-        int Xmax = Wbox-Wpanel2;
-        int Ymax = Hbox-Hpanel2;
-        if(Xpanel2>Xmax) Xpanel2 = Xmax;
-        if(Ypanel2>Ymax) Ypanel2 = Ymax;
+        int Xpanel2 = Xpanel2_0 + p.x - Xmouse_0;
+        int Ypanel2 = Ypanel2_0 + p.y - Ymouse_0;
+        if (Xpanel2 < 0) {
+            Xpanel2 = 0;
+        }
+        if (Ypanel2 < 0) {
+            Ypanel2 = 0;
+        }
+        int Xmax = Wbox - Wpanel1;
+        int Ymax = Hbox - Hpanel1;
+        if (Xpanel2 > Xmax) {
+            Xpanel2 = Xmax;
+        }
+        if (Ypanel2 > Ymax) {
+            Ypanel2 = Ymax;
+        }
         //refresh
         p.x = Xpanel2;
         p.y = Ypanel2;
         jPanel2.setLocation(p);    }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void jPanel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseReleased
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_jPanel2MouseReleased
+
+    private void jPanel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseExited
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_jPanel1MouseExited
+
+    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_jPanel1MouseEntered
+
+    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_jPanel2MouseExited
+
+    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_jPanel2MouseEntered
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
         Rectangle r = jLayeredPane1.getBounds();
         Wbox = r.width;
         Hbox = r.height;
         r = jPanel2.getBounds();
-        Wpanel2 = r.width;
-        Hpanel2 = r.height;
+        Wpanel1 = r.width;
+        Hpanel1 = r.height;
         Xpanel2_0 = r.x;
         Ypanel2_0 = r.y;
-        
         //Cambio de icono
         Point p = jLayeredPane1.getMousePosition();
         Xmouse_0 = p.x;
         Ymouse_0 = p.y;
-        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));    }//GEN-LAST:event_jPanel2MousePressed
-
-    private void jPanel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseReleased
-        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    }//GEN-LAST:event_jPanel2MouseReleased
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
+    }//GEN-LAST:event_jPanel2MousePressed
 
     /**
      * @param args the command line arguments
@@ -220,8 +266,8 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
     }
-    int Wbox,Hbox,Wpanel1,Hpanel1,Wpanel2,Hpanel2;
-    int Xpanel1_0,Ypanel1_0,Xpanel2_0,Ypanel2_0,Xmouse_0,Ymouse_0;
+    int Wbox, Hbox, Wpanel1, Hpanel1;
+    int Xpanel1_0, Ypanel1_0, Xpanel2_0, Ypanel2_0, Xmouse_0, Ymouse_0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
