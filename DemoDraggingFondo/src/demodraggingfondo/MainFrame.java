@@ -29,9 +29,10 @@ public class MainFrame extends javax.swing.JFrame {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Héctor Garbisu DIU 2015");
+        setTitle("Demo Arrastre con Fondo");
 
         jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -70,19 +71,27 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLayeredPane1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("G:\\Documentos\\NetBeansProjects\\DemoDragging\\Painting.jpg")); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLayeredPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon("Painting.jpg"));
+        jLabel1.setText(" ");
+        jLayeredPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 320));
+
+        jLabel2.setText("Héctor Garbisu DIU 2015");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2))
         );
 
         pack();
@@ -173,6 +182,7 @@ public class MainFrame extends javax.swing.JFrame {
     int Xpanel1_0,Ypanel1_0,Xpanel2_0,Ypanel2_0,Xmouse_0,Ymouse_0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
